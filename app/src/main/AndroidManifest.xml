@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="ru.ifmo.md.colloquium2.CandidatesListActivity"
+            android:label="@string/title_activity_candidates_list" >
+        </activity>
     </application>
 
 </manifest>
