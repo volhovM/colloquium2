@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -114,9 +115,11 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
                         return candidate.getVotes() > candidate2.getVotes() ? -1 : (candidate.getVotes() == candidate2.getVotes() ? 0 : 1);
                     }
                 });
+                int sum = 0;
+                for (Candidate candidate : candidates) { sum += candidate.getVotes(); }
                 String[] can = new String[candidates.size()];
                 for (int i = 0; i < can.length; i++) {
-                    can[i] = candidates.get(i).toString();
+                    can[i] = candidates.get(i).getVotes() + " | " + new DecimalFormat("##.##").format(((double) candidates.get(i).getVotes()) / ((double) sum)) + "% | " + candidates.get(i).getName();
                 }
                 bundle.putStringArray("candidates", can);
                 Intent intent = new Intent(this, CandidatesListActivity.class);
